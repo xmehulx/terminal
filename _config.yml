@@ -121,12 +121,12 @@ comments:
   ## Gitalk
   # please refer to https://github.com/gitalk/gitalk for more info.
   gitalk:
-    clientID    : # GitHub Application Client ID
-    clientSecret: # GitHub Application Client Secret
-    repository  : # GitHub repo
-    owner       : # GitHub repo owner
-    admin: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
-      # - your GitHub Id
+    clientID    : 47615e03a4d231a002fc # GitHub Application Client ID
+    clientSecret: 1abb526f681e2f1db31042cb082905b195944fbc # GitHub Application Client Secret
+    repository  : issues # GitHub repo
+    owner       : xmehulx # GitHub repo owner
+    admin: xmehulx # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
+       # - your GitHub Id
 
   ## Valine
   # please refer to https://valine.js.org/en/ for more info.
@@ -163,11 +163,11 @@ search:
 ## => Analytics
 ##############################
 analytics:
-  provider: false # false (default), "google", "custom"
+  provider: "google" # false (default), "google", "custom"
 
   ## Google Analytics
   google:
-    tracking_id : # Google Analytics id for the site
+    tracking_id : "UA-164500584-1" # Google Analytics id for the site
     anonymize_ip: false # Anonymize IP tracking for Analytics
 
 
@@ -205,9 +205,10 @@ defaults:
       license: true
       aside:
         toc: true
-      show_edit_on_github: true
+      show_edit_on_github: false
       show_subscribe: true
       pageview: true
+      comments: true
 
 
 ## => Plugins
