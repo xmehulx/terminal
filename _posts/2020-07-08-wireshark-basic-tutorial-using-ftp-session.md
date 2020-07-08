@@ -57,7 +57,7 @@ When you open Wireshark, the main screen will be divided into two broad section:
 
 <div class="card">
   <div class="card__image">
-    <img class="image" src="/assets/images/articles/ws-if.png" alt="Interfaces recognised by Wireshark" />
+    <img class="image" src="https://xmehulx.github.io/terminal/assets/images/articles/ws-if.png" alt="Interfaces recognised by Wireshark" />
     <div class="overlay">
       <p>Interfaces recognised by Wireshark</p>
     </div>
@@ -89,7 +89,7 @@ $ ip addr
 The most common interfaces woulb be 'wlan0' for wireless connection and 'eth0' for ethernet connection. And if you don't know what you are doing and just open 'any' interface, you'll be overwhelmed by the amount of "noise" in the network (See the video below). In order to facilitate the analysis, we should apply **capture filters** and **display filters**
 
 <video width="100%" height="100%" style="border-radius:6px;" controls autoplay muted loop>
-  <source src="/assets/test.mp4" type="video/mp4">
+  <source src="https://xmehulx.github.io/terminal/assets/test.mp4" type="video/mp4">
 </video>
 
 ## Filters
@@ -191,7 +191,7 @@ ftp> quit
 
 And the packet log is shown below
 
-![Wireshark Capture](/assets/images/articles/cap1.png)
+![Wireshark Capture](https://xmehulx.github.io/terminal/assets/images/articles/cap1.png)
 
 So let's go over each and every command and see what's happening. The client IP in this case was **10.10.15.211** and the FTP server was hosted on the machine with IP **10.10.10.187**
 
