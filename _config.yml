@@ -21,9 +21,7 @@ highlight_theme: tomorrow-night # "default" (default), "tomorrow", "tomorrow-nig
 url     : https://xmehulx.github.com/terminal # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
 title   : Terminal Hub
-description: > # this means to ignore newlines until "Language & timezone"
-  Articles and posts on various Unix/Linux and Windows utilites and commands for every pentester and terminal enthusiast to automate redundant tasks.
-
+description: Articles and posts on various Unix/Linux and Windows utilites and commands for every pentester and terminal enthusiast to automate redundant tasks.
 
 ## => Language and Timezone
 ##############################
