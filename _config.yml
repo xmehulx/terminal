@@ -36,10 +36,10 @@ author:
   name      : Mehul Singh
   url       : https://xmehulx.github.io
   avatar    : # path or url of avatar image (square)
-  bio       : Mehul is an undergraduate student who is certified by Fortinet and ICSI and is currently preparing for his OSCP certification.
+  bio       : Mehul is an Graduate student with experience as a GRC advisor and who is working towards his expertise in red-teaming.
   email     :
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
-  twitter   : _xmehulx_ # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
+  twitter   : 0x__shell # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
   medium    : # "user_name" the last part of your profile url, e.g. https://medium.com/user_name
   linkedin  : mehul-singh-0x00 # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
   github    : xmehulx # "user_name" the last part of your profile url, e.g. https://github.com/user_name
@@ -165,7 +165,7 @@ analytics:
 
   ## Google Analytics
   google:
-    tracking_id : "UA-164500584-1" # Google Analytics id for the site
+    tracking_id : "G-8G2R9MG8CJ" # Google Analytics id for the site
     anonymize_ip: false # Anonymize IP tracking for Analytics
 
 

@@ -34,9 +34,9 @@ On July 1, Qualys Inc published a [security advisory](https://www.qualys.com/202
 This was made possible due to GNU's C library, glibc, not locking memory altering modules such as `malloc()` in the vulnerable versions, which runs with full privilege, and outside any kind of sandbox and reaching that unsafe state before the code completes its execution. The name of this CVE is due to it being an actual regressed SSH state as it was due to CVE-2006-5051, which also allowed race condition in signal handler to provide remote code execution.
 
 An overview of race condition across different vulnerable versions:
-1. OpenSSH 3.4p1 (Debian 3.0r6): Exploiting this version required interrupting a call to `free()` with SIGALRM, leaving the heap in an inconsistent state and exploiting this state in another call to free(). It took the researchers approximately 10,000 tries, or about one week on average, to obtain a remote root shell in this version.
+1. OpenSSH 3.4p1 (Debian 3.0r6): Exploiting this version required interrupting a call to `free()` with _SIGALRM_, leaving the heap in an inconsistent state and exploiting this state in another call to free(). It took the researchers approximately 10,000 tries, or about one week on average, to obtain a remote root shell in this version.
 2. OpenSSH 4.2p1 (Ubuntu 6.06.1): Exploitation of this involved interrupting a call to `pam_start()` with _SIGALRM_, leading to an inconsistent state exploited in a call to pam_end(). It takes about 1-2 days to obtain a remote root shell
-3. OpenSSH 9.2p1 (Debian 12.5.0): Exploitating this involves interrupting a call to malloc() with SIGALRM, resulting in an inconsistent heap state exploited in another malloc() call. It took them about 6-8 hours on average to obtain a remote root shell
+3. OpenSSH 9.2p1 (Debian 12.5.0): Exploitating this involves interrupting a call to malloc() with _SIGALRM_, resulting in an inconsistent heap state exploited in another malloc() call. It took them about 6-8 hours on average to obtain a remote root shell
 
 ## How did it came to be?
 
@@ -124,7 +124,7 @@ And finally, this `do_log()` is what calls glibc's native syslog() (line 419) in
 424 }
 ```
 
-* Going back to our question 1, does this `syslog()` call any async-signal-unsafe? Yes! But *only if* the very first call to `syslog()` is made inside the SIGALRM handler, then syslog allocates a file structure and an internal read buffer through malloc
+* Going back to our question 1, does this `syslog()` call any async-signal-unsafe? Yes! But *only if* the very first call to `syslog()` is made inside the _SIGALRM_ handler, then syslog allocates a file structure and an internal read buffer through malloc
 
 * What about the second question? Is it locked? No! Based on commit [#3f6bb8a](https://sourceware.org/git/?p=glibc.git;a=commit;h=3f6bb8a32e5f5efd78ac08c41e623651cc242a89), [#a15d53e2](https://sourceware.org/git/?p=glibc.git;a=commit;h=a15d53e2de4c7d83bda251469d92a3c7b49a90db) and [#](https://sourceware.org/git/?p=glibc.git;a=commit;h=905a7725e9157ea522d8ab97b4c8b96aeb23df54) on glibc, we notice that a 'feature' was added to bypass locking when single-threading our application.
 
@@ -132,7 +132,7 @@ This guarantees that race conditions can be achieved, barring the features like 
 
 ### Exploiting Malloc
 
-Now that we know that we can run aysnc-signal-unsafe functions, the next thing is to find a control flow in `malloc()` which, when interrupted by SIGALRM at the right time, leaves the heap in a volatile state. If this gets possible, another signal can be made from the SIGALRM handler in sshd with user defined payload to be executed in a privileged state (something like a piggyback attack).
+Now that we know that we can run aysnc-signal-unsafe functions, the next thing is to find a control flow in `malloc()` which, when interrupted by _SIGALRM_ at the right time, leaves the heap in a volatile state. If this gets possible, another signal can be made from the _SIGALRM_ handler in sshd with user defined payload to be executed in a privileged state (something like a piggyback attack).
 
 The researchers found numerous possible entries which might trigger this, and they went ahead with exploiting the function `_int_malloc()` which makes use of relative sizes and not absolute addresses, and this makes it better suited for amd64 exploits due to them having better ASLR capabilities. But even with this approach, their exploit worked only on i386 systems for the time being. 
 
@@ -153,7 +153,7 @@ This vulnerability was mitigated on June 6, 2024, through commit [#81c1099](http
 And in the worse case scenarios where sshd cannot be updated or recompiled, you can just set the _LoginGraceTime_ to 0 in the configuration file. This will make the code vulnerable to DoS attacks but protect against possible remote code executions as mentioned in their advisory.
 
 
-## Interesting topics for further reading
+## Further reading
 
 1. [Delivering Signals for Fun and Profit](https://lcamtuf.coredump.cx/signals.txt)
 2. [JPEG COM Marker Processing Vulnerability](https://www.openwall.com/articles/JPEG-COM-Marker-Vulnerability#exploit)
