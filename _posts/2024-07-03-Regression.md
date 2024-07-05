@@ -44,7 +44,7 @@ We will try to understand how they did it, but from a red teaming mindset; to un
 ### Timeline
 
 On October 16 2020, the following piece of code got removed from log.c file as seen in the [OpenSSH#752250c](https://github.com/openssh/openssh-portable/commit/752250caabda3dd24635503c4cd689b32a650794) commit. And this triggered a chain code execution which, if timed right, can allow a person to execute remote code without prior authentication.
-```shell
+```c
 void
 sigdie(const char *fmt,...)
 {
@@ -83,6 +83,7 @@ Interestingly enough, just after they started working on it, [Bugzilla #3690](ht
 ```
 
 In the latest versions of OpenSSH, (the last vulnerable version) the `grace_alarm_handler()` function in `sshd.c` [ultimately] calls a very interesting function called `syslog()`. Below is the complete chain of codes:
+
 ```c
  353 grace_alarm_handler(int sig)
  354 {
@@ -95,6 +96,7 @@ In the latest versions of OpenSSH, (the last vulnerable version) the `grace_alar
 ```
 
 This `sigdie()` function is a macro defined in `log.h` header file where macro expansion to `sshsigdie()` function takes place. This `sshsigdie()` function is defined in `log.c` file:
+
 ```c
 451 sshsigdie(const char *file, const char *func, int line, int showfunc,                                                                           452     LogLevel level, const char *suffix, const char *fmt, ...)
 453 {
@@ -105,6 +107,7 @@ This `sigdie()` function is a macro defined in `log.h` header file where macro e
 ```
 
 This `sshlogv` is also defined in `log.c` through macro in `log.h`:
+
 ```c
 464 sshlogv(const char *file, const char *func, int line, int showfunc,                                                                             465     LogLevel level, const char *suffix, const char *fmt, va_list args)
 466 {
@@ -114,6 +117,7 @@ This `sshlogv` is also defined in `log.c` through macro in `log.h`:
 ```
 
 And finally, this `do_log()` is what calls glibc's native syslog() (line 419) in `log.c`:
+
 ```c
 336 static void do_log(LogLevel level, int force, const char *suffix, 
 337       const char *fmt, va_list args)
