@@ -23,6 +23,7 @@ tags:
   - memory corruption
   - race condition
   - remote code execution
+  - aysnc-signal-unsafe
 ---
 
 ## What is RegreSSHion vulnerability?
@@ -43,7 +44,7 @@ We will try to understand how they did it, but from a red teaming mindset; to un
 ### Timeline
 
 On October 16 2020, the following piece of code got removed from log.c file as seen in the [OpenSSH#752250c](https://github.com/openssh/openssh-portable/commit/752250caabda3dd24635503c4cd689b32a650794) commit. And this triggered a chain code execution which, if timed right, can allow a person to execute remote code without prior authentication.
-```C
+```shell
 void
 sigdie(const char *fmt,...)
 {
@@ -64,7 +65,7 @@ The researches in Qualys actually exploited the older version of OpenSSH (prior 
 
 ### Execution Chain in OpenSSH
 
-```C
+```c
 void sigdie(const char *fmt,...)
 {
 #ifdef DO_LOG_SAFE_IN_SIGHAND
