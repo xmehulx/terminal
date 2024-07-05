@@ -9,7 +9,7 @@ article_header:
   theme: dark
   background_color: false
   background_image: 
-    gradient: 'linear-gradient(to right, red , yellow)'
+    gradient: 'linear-gradient(to right, yellow, red)'
 aside:
   toc: true
 author: Mehul Singh
@@ -87,7 +87,8 @@ In the latest versions of OpenSSH, (the last vulnerable version) the `grace_alar
 This `sigdie()` function is a macro defined in `log.h` header file where macro expansion to `sshsigdie()` function takes place. This `sshsigdie()` function is defined in `log.c` file:
 
 ```c
-451 sshsigdie(const char *file, const char *func, int line, int showfunc,                                                                           452     LogLevel level, const char *suffix, const char *fmt, ...)
+451 sshsigdie(const char *file, const char *func, int line, int showfunc,
+452     LogLevel level, const char *suffix, const char *fmt, ...)
 453 {
 ...
 457     sshlogv(file, func, line, showfunc, SYSLOG_LEVEL_FATAL, suffix, fmt, args);
@@ -98,7 +99,8 @@ This `sigdie()` function is a macro defined in `log.h` header file where macro e
 This `sshlogv` is also defined in `log.c` through macro in `log.h`:
 
 ```c
-464 sshlogv(const char *file, const char *func, int line, int showfunc,                                                                             465     LogLevel level, const char *suffix, const char *fmt, va_list args)
+464 sshlogv(const char *file, const char *func, int line, int showfunc,
+465     LogLevel level, const char *suffix, const char *fmt, va_list args)
 466 {
 ... 
 493     do_log(level, forced, suffix, fmt2, args);
@@ -108,7 +110,7 @@ This `sshlogv` is also defined in `log.c` through macro in `log.h`:
 And finally, this `do_log()` is what calls glibc's native syslog() (line 419) in `log.c`:
 
 ```c
-336 static void do_log(LogLevel level, int force, const char *suffix, 
+336 static void do_log(LogLevel level, int force, const char *suffix,
 337       const char *fmt, va_list args)
 338 {
 ...
