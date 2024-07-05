@@ -59,28 +59,31 @@ sigdie(const char *fmt,...)
 }
 ```
 
-The researches in Qualys actually exploited the older version of OpenSSH (prior to 4.4p1) by exploiting its calling of `grace_alarm_handler()` function which waited for the _LoginGraceTime_ before freeing the buffer by calling `free()` function, which is a well known unsafe asynchronous signal function. With this information, they tried to find two things or conditions which must be met to exploit the same race condition in the latest versions of OpenSSH as well:
+The researchers in Qualys actually exploited the older version of OpenSSH (prior to 4.4p1) by exploiting its calling of `grace_alarm_handler()` function which waited for the _LoginGraceTime_ before freeing the buffer by calling `free()` function, which is a well known unsafe asynchronous signal function. With this information, they tried to find two things or conditions which must be met to exploit the same race condition in the latest versions of OpenSSH as well:
 1. Is there a similar function being called here which is async-signal-unsafe such as `malloc()` and `free()`?
 2. If there is, is it behind a lock?
+
+Interestingly enough, just after they started working on it, [Bugzilla #3690](https://bugzilla.mindrot.org/show_bug.cgi?id=3690) thread got created which raised an extremely related issue, which, got marked as a duplicate by [Bugzilla #3598](https://bugzilla.mindrot.org/show_bug.cgi?id=3598)
 
 ### Execution Chain in OpenSSH
 
 ```c
-void sigdie(const char *fmt,...)
-{
-#ifdef DO_LOG_SAFE_IN_SIGHAND
-    va_list args;
-
-    va_start(args, fmt);
-    do_log(SYSLOG_LEVEL_FATAL, fmt, args);
-    va_end(args);
-#endif
-    _exit(1);
-}
+172 void 
+173 sigdie(const char *fmt,...)
+174 {
+175 #ifdef DO_LOG_SAFE_IN_SIGHAND
+176      va_list args;
+177
+178      va_start(args, fmt);
+179      do_log(SYSLOG_LEVEL_FATAL, fmt, args);
+180      va_end(args);
+181  #endif
+182      _exit(1);
+183  }
 ```
 
 In the latest versions of OpenSSH, (the last vulnerable version) the `grace_alarm_handler()` function in `sshd.c` [ultimately] calls a very interesting function called `syslog()`. Below is the complete chain of codes:
-```C
+```c
  353 grace_alarm_handler(int sig)
  354 {
  ... 
@@ -92,7 +95,7 @@ In the latest versions of OpenSSH, (the last vulnerable version) the `grace_alar
 ```
 
 This `sigdie()` function is a macro defined in `log.h` header file where macro expansion to `sshsigdie()` function takes place. This `sshsigdie()` function is defined in `log.c` file:
-```C
+```c
 451 sshsigdie(const char *file, const char *func, int line, int showfunc,                                                                           452     LogLevel level, const char *suffix, const char *fmt, ...)
 453 {
 ...
@@ -102,7 +105,7 @@ This `sigdie()` function is a macro defined in `log.h` header file where macro e
 ```
 
 This `sshlogv` is also defined in `log.c` through macro in `log.h`:
-```C
+```c
 464 sshlogv(const char *file, const char *func, int line, int showfunc,                                                                             465     LogLevel level, const char *suffix, const char *fmt, va_list args)
 466 {
 ... 
@@ -111,7 +114,7 @@ This `sshlogv` is also defined in `log.c` through macro in `log.h`:
 ```
 
 And finally, this `do_log()` is what calls glibc's native syslog() (line 419) in `log.c`:
-```C
+```c
 336 static void do_log(LogLevel level, int force, const char *suffix, 
 337       const char *fmt, va_list args)
 338 {
@@ -155,4 +158,3 @@ This vulnerability was mitigated through commit [#81c1099](https://github.com/op
 
 And in the worse case scenarios where sshd cannot be updated or recompiled, you can just set the _LoginGraceTime_ to 0 in the configuration file. This will make the code vulnerable to DoS attacks but protect against possible remote code executions as mentioned in their advisory.
 
-[Bugzilla #3690](https://bugzilla.mindrot.org/show_bug.cgi?id=3690) thread
