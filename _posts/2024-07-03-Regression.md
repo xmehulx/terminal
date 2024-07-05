@@ -9,7 +9,7 @@ article_header:
   theme: dark
   background_color: false
   background_image: 
-    gradient: 'linear-gradient(to right, yellow, red)'
+    gradient: 'linear-gradient(to right, orange, red)'
 aside:
   toc: true
 author: Mehul Singh
@@ -20,7 +20,6 @@ tags:
   - SSH
   - CVE
   - c
-  - deadlock
   - memory corruption
   - race condition
   - remote code execution
