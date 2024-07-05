@@ -144,11 +144,17 @@ From here on out the exploit gets real technical as it deals with controlling an
 
 *TL;DR: No\**
 
-From their report, although this attack can provide remote code execution, it takes thousands of attempts which can be logged and easily detected by modern solutions. And this by default doesn't affect some systems such as OpenBSD with already uses async-signal-safe functions.
+From their report, although this attack can provide remote code execution, it takes thousands of attempts which can be logged and easily detected by modern solutions. And this by default doesn't affect some systems such as OpenBSD which already uses async-signal-safe functions such as `syslog_r()`.
 
 ### Mitigations and Precautions
 
-This vulnerability was mitigated through commit [#81c1099](https://github.com/openssh/openssh-portable/commit/81c1099d22b81ebfd20a334ce986c4f753b0db29) which was a part of a much bigger commit aiming at a diffense-in-depth approach which could be seen from another recent commit [#03e3de4]() "Start the process of splitting sshd into separate binaries". And since this might introduce difficulties in backporting, you can simply remove or comment out the async-signal-unsafe code from previously mentioned `sshsigdie()` function.
+This vulnerability was mitigated on June 6, 2024, through commit [#81c1099](https://github.com/openssh/openssh-portable/commit/81c1099d22b81ebfd20a334ce986c4f753b0db29) which was a part of a much bigger commit aiming at a diffense-in-depth approach which could be seen from another recent commit [#03e3de4]() "Start the process of splitting sshd into separate binaries". And since this might introduce difficulties in backporting, you can simply remove or comment out the async-signal-unsafe code from previously mentioned `sshsigdie()` function.
 
 And in the worse case scenarios where sshd cannot be updated or recompiled, you can just set the _LoginGraceTime_ to 0 in the configuration file. This will make the code vulnerable to DoS attacks but protect against possible remote code executions as mentioned in their advisory.
 
+
+## Interesting topics for further reading
+
+1. [Delivering Signals for Fun and Profit](https://lcamtuf.coredump.cx/signals.txt)
+2. [JPEG COM Marker Processing Vulnerability](https://www.openwall.com/articles/JPEG-COM-Marker-Vulnerability#exploit)
+3. [ASLRn’t: How memory alignment broke library ASLR](https://zolutal.github.io/aslrnt/)
