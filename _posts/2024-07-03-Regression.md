@@ -7,8 +7,9 @@ header:
 article_header:
   type: overlay
   theme: dark
-  background_color: '#123'
-  background_image: false
+  background_color: false
+  background_image: 
+    gradient: 'linear-gradient(to right, red , yellow)'
 aside:
   toc: true
 author: Mehul Singh
@@ -24,6 +25,7 @@ tags:
   - race condition
   - remote code execution
   - aysnc-signal-unsafe
+  - glibc
 ---
 
 ## What is RegreSSHion vulnerability?
@@ -44,28 +46,6 @@ We will try to understand how they did it, but from a red teaming mindset; to un
 ### Timeline
 
 On October 16 2020, the following piece of code got removed from log.c file as seen in the [OpenSSH#752250c](https://github.com/openssh/openssh-portable/commit/752250caabda3dd24635503c4cd689b32a650794) commit. And this triggered a chain code execution which, if timed right, can allow a person to execute remote code without prior authentication.
-```c
-void
-sigdie(const char *fmt,...)
-{
-#ifdef DO_LOG_SAFE_IN_SIGHAND
-    va_list args;
-
-    va_start(args, fmt);
-    do_log(SYSLOG_LEVEL_FATAL, fmt, args);
-    va_end(args);
-#endif
-    _exit(1);
-}
-```
-
-The researchers in Qualys actually exploited the older version of OpenSSH (prior to 4.4p1) by exploiting its calling of `grace_alarm_handler()` function which waited for the _LoginGraceTime_ before freeing the buffer by calling `free()` function, which is a well known unsafe asynchronous signal function. With this information, they tried to find two things or conditions which must be met to exploit the same race condition in the latest versions of OpenSSH as well:
-1. Is there a similar function being called here which is async-signal-unsafe such as `malloc()` and `free()`?
-2. If there is, is it behind a lock?
-
-Interestingly enough, just after they started working on it, [Bugzilla #3690](https://bugzilla.mindrot.org/show_bug.cgi?id=3690) thread got created which raised an extremely related issue, which, got marked as a duplicate by [Bugzilla #3598](https://bugzilla.mindrot.org/show_bug.cgi?id=3598)
-
-### Execution Chain in OpenSSH
 
 ```c
 172 void 
@@ -81,6 +61,15 @@ Interestingly enough, just after they started working on it, [Bugzilla #3690](ht
 182      _exit(1);
 183  }
 ```
+
+The researchers in Qualys actually exploited the older version of OpenSSH (prior to 4.4p1) by exploiting its calling of `grace_alarm_handler()` function which waited for the _LoginGraceTime_ before freeing the buffer by calling `free()` function, which is a well known unsafe asynchronous signal function. With this information, they tried to find two things or conditions which must be met to exploit the same race condition in the latest versions of OpenSSH as well:
+1. Is there a similar function being called here which is async-signal-unsafe such as `malloc()` and `free()`?
+2. If there is, is it behind a lock?
+
+Interestingly enough, just after they started working on it, [Bugzilla #3690](https://bugzilla.mindrot.org/show_bug.cgi?id=3690) thread got created which raised an extremely related issue, which, got marked as a duplicate by [Bugzilla #3598](https://bugzilla.mindrot.org/show_bug.cgi?id=3598)
+
+### Execution Chain in OpenSSH
+
 
 In the latest versions of OpenSSH, (the last vulnerable version) the `grace_alarm_handler()` function in `sshd.c` [ultimately] calls a very interesting function called `syslog()`. Below is the complete chain of codes:
 
