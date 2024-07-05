@@ -1,6 +1,7 @@
 .article__footer {
   margin: map-get($spacers, 4) 0;
   font-size: map-get($base, font-size-sm);
+  align-items: center;
 }
 
 .article__license, .article__subscribe {
