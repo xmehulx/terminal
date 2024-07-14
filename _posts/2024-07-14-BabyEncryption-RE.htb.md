@@ -7,8 +7,8 @@ article_header:
   theme: dark
   background_color: false
   background_image: 
-    gradient: 'linear-gradient(to right, #228B22, #00FF00)'
-    src: 'assets/images/articles/HTB-background.jpg'
+    gradient: 'linear-gradient(to right, #228B22, #00FF00, 0.4)'
+    src: 'assets/images/articles/htb-background.jpg'
 aside:
   toc: true
 author: Mehul Singh
