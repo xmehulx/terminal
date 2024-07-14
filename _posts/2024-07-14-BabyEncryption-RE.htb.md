@@ -1,7 +1,9 @@
 ---
 title: BabyEncryption. HackTheBox RE Challenge writeup
 excerpt: Solving a very simple RE challenge on the HackTheBox platform. Could we reverse engineer without actually reverse engineering a code?
-layout: article
+mode: immersive
+header:
+  theme: dark
 article_header:
   type: overlay
   theme: dark
