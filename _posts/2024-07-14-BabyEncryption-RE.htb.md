@@ -4,6 +4,7 @@ excerpt: Solving a very simple RE challenge on the HackTheBox platform. Could we
 mode: immersive
 header:
   theme: dark
+layout: article
 article_header:
   type: overlay
   theme: dark
@@ -88,7 +89,7 @@ f.close()
 decryption(hidden)
 ```
 
-### #2. Let's not calculate
+### #2. Let's not solve math 
 
 Like me, if you want to avoid the brainwork, we need to think of other ways. And one thing we know is that every flag will be in printable characters. So just make a dictionary of each possible character and map the same calculation in the encryption as its key. This way we can simply replace each value from the numerical array to characters by looking up our dictionary!
 
