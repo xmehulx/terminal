@@ -47,7 +47,7 @@ f.close()
 ```
 And if we directly run it, we can't as there is no module name `secret`. But we can see that we don't actually need to make the program run if we can simply reverse engineer the code. So if we check the code we find that to encrypt the code, each letter is changed to its ASCII number (most probably), denoted by `char` here  and then the following calculation is done on it.
 
-$$arr[i]=(123 \times char+18) $\%$ 256$$
+$$arr[i]=(123 \times char+18) \% 256$$
 
 And once each calculated value is store in the list, it is returned as an immutable bytes object, and this byte value is converted to hex before being saved as the encrypted value in msg.enc.
 
@@ -55,11 +55,11 @@ And once each calculated value is store in the list, it is returned as an immuta
 
 So if we want to reverse engineer the code, we need to remember what modulus function is. One of the basic definition allows us to write any modulus function as below:
 
-$$divident $\%$ divisor = remainder$$
+$$divident \% divisor = remainder$$
 
 $$(divisor \times quotient)+remainder=divident$$
 
-Then we can reverse each calculation with the following one:
+Then we can reverse each calculation with the following pseudo-code:
 
 ```python
     for i in encoded_msg:
