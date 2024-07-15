@@ -62,10 +62,10 @@ $$(divisor \times quotient)+remainder=divident$$
 Then we can reverse each calculation with the following pseudo-code:
 
 ```python
-    for i in encoded_msg:
-        for some range of m in quotient:
-            if ((256*m)+i-18)%123 == 0:
-                #append ascii character
+for i in encoded_msg:
+    for some range of m in quotient:
+        if ((256*m)+i-18)%123 == 0:
+            #append ascii character
 ```
 
 And our final code will look like this.
