@@ -65,14 +65,14 @@ Then we can reverse each calculation with the following pseudo-code:
     for i in encoded_msg:
         for some range of m in quotient:
             if ((256*m)+i-18)%123 == 0:
-                append ascii value of this calculation
+                #append ascii character
 ```
 
 And our final code will look like this.
 
 ```python
 def decryption(hidden):
-    arr = list(msg_bytes = bytes.fromhex(hidden))
+    arr = list(bytes.fromhex(hidden))
     msg = []
     for i in arr:
         for m in range(100):
@@ -91,21 +91,24 @@ decryption(hidden)
 
 ### #2. Let's not solve math 
 
-Like me, if you want to avoid the brainwork, we need to think of other ways. And one thing we know is that every flag will be in printable characters. So just make a dictionary of each possible character and map the same calculation in the encryption as its key. This way we can simply replace each value from the numerical array to characters by looking up our dictionary!
+Like me, if you want to avoid the brainwork and trade-it off with a bit longer easier work, we need to think of other ways. And one thing we know is that every flag will be in printable characters. So if we just make a dictionary of each possible character we can map the same calculation in the encryption as its key. This way we can replace each value from the numerical array to characters by simply looking up our dictionary!
 
 ```python
 special = ['!','@','#','$','%','^','&','*','(',')','{','}','.',',','/','\\',' ','_','\n']
-
 dic = {}
+
+# Adding all alphabets
 for i,j in zip(range(ord('a'), ord('z')+1), range(ord('A'), ord('Z')+1)):
     mutation_i = (123*i+18)%256; mutation_j = (123*j+18)%256
     dic[mutation_i] = chr(i)
     dic[mutation_j] = chr(j)
 
+# Adding all numbers
 for i in range (0,10):
     mutation_i = (123*ord(str(i))+18)%256
     dic[mutation_i] = str(i)
 
+#Adding special characters
 for i in special:
     mutation_i = (123*ord(i)+18)%256
     dic[mutation_i] = i
