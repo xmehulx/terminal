@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-06-24T22:09:50+05:30</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Terminal Hub</title><subtitle>Articles and posts on various Unix/Linux and Windows utilites and commands for every pentester and terminal enthusiast to automate redundant tasks.</subtitle><author><name>Mehul Singh</name></author><entry><title type="html">BabyEncryption. HackTheBox RE Challenge writeup</title><link href="http://0.0.0.0:4000/BabyEncryption-RE.htb" rel="alternate" type="text/html" title="BabyEncryption. HackTheBox RE Challenge writeup" /><published>2024-07-14T00:00:00+05:30</published><updated>2024-07-14T00:00:00+05:30</updated><id>http://0.0.0.0:4000/BabyEncryption-RE.htb</id><content type="html" xml:base="http://0.0.0.0:4000/BabyEncryption-RE.htb"><![CDATA[<h2 id="overview">Overview</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-06-24T22:19:40+05:30</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Terminal Hub</title><subtitle>Articles and posts on various Unix/Linux and Windows utilites and commands for every pentester and terminal enthusiast to automate redundant tasks.</subtitle><author><name>Mehul Singh</name></author><entry><title type="html">BabyEncryption. HackTheBox RE Challenge writeup</title><link href="http://0.0.0.0:4000/BabyEncryption-RE.htb" rel="alternate" type="text/html" title="BabyEncryption. HackTheBox RE Challenge writeup" /><published>2024-07-14T00:00:00+05:30</published><updated>2024-07-14T00:00:00+05:30</updated><id>http://0.0.0.0:4000/BabyEncryption-RE.htb</id><content type="html" xml:base="http://0.0.0.0:4000/BabyEncryption-RE.htb"><![CDATA[<h2 id="overview">Overview</h2>
 
 <p>This time we will be focusing on a very simple reverse engineering challenge on HackTheBox called “BabyEncryption”. What made me want to write this post for it was the fact that how being lazy can sometimes (emphasis on ‘sometimes’!) show you new ways to do the same task. So let’s begin.</p>
 
@@ -101,7 +101,7 @@
 
 <p>And this gives us the decrypted message as well!</p>
 
-<p><img src="/terminal/assets/images/articles/bb.png" alt="Image" class="rounded" /></p>]]></content><author><name>Mehul Singh</name></author><category term="htb" /><category term="reverse engineering" /><category term="python" /><summary type="html"><![CDATA[Solving a very simple RE challenge on the HackTheBox platform. Could we reverse engineer without actually reverse engineering a code?]]></summary></entry><entry><title type="html">RegreSSHion? Technical analysis of CVE-2024-6387</title><link href="http://0.0.0.0:4000/Regression" rel="alternate" type="text/html" title="RegreSSHion? Technical analysis of CVE-2024-6387" /><published>2024-07-03T00:00:00+05:30</published><updated>2024-07-03T00:00:00+05:30</updated><id>http://0.0.0.0:4000/Regression</id><content type="html" xml:base="http://0.0.0.0:4000/Regression"><![CDATA[<h2 id="what-is-regresshion-vulnerability">What is RegreSSHion vulnerability?</h2>
+<p><img src="/assets/images/articles/bb.png" alt="Image" class="rounded" /></p>]]></content><author><name>Mehul Singh</name></author><category term="htb" /><category term="reverse engineering" /><category term="python" /><summary type="html"><![CDATA[Solving a very simple RE challenge on the HackTheBox platform. Could we reverse engineer without actually reverse engineering a code?]]></summary></entry><entry><title type="html">RegreSSHion? Technical analysis of CVE-2024-6387</title><link href="http://0.0.0.0:4000/Regression" rel="alternate" type="text/html" title="RegreSSHion? Technical analysis of CVE-2024-6387" /><published>2024-07-03T00:00:00+05:30</published><updated>2024-07-03T00:00:00+05:30</updated><id>http://0.0.0.0:4000/Regression</id><content type="html" xml:base="http://0.0.0.0:4000/Regression"><![CDATA[<h2 id="what-is-regresshion-vulnerability">What is RegreSSHion vulnerability?</h2>
 
 <p>On July 1, Qualys Inc published a <a href="https://www.qualys.com/2024/07/01/cve-2024-6387/regresshion.txt">security advisory</a> stating a new vulnerability in Glibc-based SSH implementation named OpenSSH, which affects 8.5p1 &lt;= OpenSSH &lt; 9.8p1 and OpenSSH &lt;= 4.4p1 versions. According to the researchers, a race condition affects the vulnerable version where, upon winning this race condition the user can execute any privileged code, remotely.</p>
 
@@ -263,7 +263,7 @@
 
 <div class="card">
   <div class="card__image">
-    <img class="image" src="https://xmehulx.github.io/terminal/assets/images/articles/ws-if.png" alt="Interfaces recognised by Wireshark" />
+    <img class="image" src="/assets/images/articles/ws-if.png" alt="Interfaces recognised by Wireshark" />
     <div class="overlay">
       <p>Interfaces recognised by Wireshark</p>
     </div>
@@ -294,7 +294,7 @@
 <p>The most common interfaces woulb be ‘wlan0’ for wireless connection and ‘eth0’ for ethernet connection. And if you don’t know what you are doing and just open ‘any’ interface, you’ll be overwhelmed by the amount of “noise” in the network (See the video below). In order to facilitate the analysis, we should apply <strong>capture filters</strong> and <strong>display filters</strong></p>
 
 <video width="100%" height="100%" style="border-radius:6px;" controls="" autoplay="" muted="" loop="">
-  <source src="https://xmehulx.github.io/terminal/assets/test.mp4" type="video/mp4" />
+  <source src="/assets/test.mp4" type="video/mp4" />
 </video>
 
 <h2 id="filters">Filters</h2>
@@ -406,7 +406,7 @@
 
 <p>And the packet log is shown below</p>
 
-<p><img src="https://xmehulx.github.io/terminal/assets/images/articles/cap1.png" alt="Wireshark Capture" /></p>
+<p><img src="/assets/images/articles/cap1.png" alt="Wireshark Capture" /></p>
 
 <p>So let’s go over each and every command and see what’s happening. The client IP in this case was <strong>10.10.15.211</strong> and the FTP server was hosted on the machine with IP <strong>10.10.10.187</strong></p>
 
