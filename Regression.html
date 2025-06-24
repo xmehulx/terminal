@@ -18,20 +18,20 @@
 
     <!-- Open Graphs -->
     <meta property="og:image" content="https://xmehulx.github.io/terminal/assets/android-chrome-512x512.png">
-    <meta property="og:description" content="Articles and posts on various Unix/Linux and Windows utilites and commands for every pentester and terminal enthusiast to automate redundant tasks.">
+    <meta property="og:description" content="How RegreSSHion vulnerability works and are you affected by it?">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Terminal Hub">
-    <meta property="og:url" content="http://0.0.0.0:4000/archive">
+    <meta property="og:title" content="RegreSSHion? Technical analysis of CVE-2024-6387">
+    <meta property="og:url" content="http://0.0.0.0:4000/Regression">
     <!-- Twitter cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="_xmehulx_">
     <meta name="twitter:creator" content="@_xmehulx_">
-    <meta name="twitter:title" content="Terminal Hub">
-    <meta name="twitter:description" content="Articles and posts on various Unix/Linux and Windows utilites and commands for every pentester and terminal enthusiast to automate redundant tasks.">
-    <meta name="twitter:image" content="https://xmehulx.github.io/terminal/assets/android-chrome-512x512.png"><title>Archive - Terminal Hub</title>
+    <meta name="twitter:title" content="RegreSSHion? Technical analysis of CVE-2024-6387">
+    <meta name="twitter:description" content="How RegreSSHion vulnerability works and are you affected by it?">
+    <meta name="twitter:image" content="https://xmehulx.github.io/terminal/assets/android-chrome-512x512.png"><title>RegreSSHion? Technical analysis of CVE-2024-6387 - Terminal Hub</title>
 
-<meta name="description" content="Articles and posts on various Unix/Linux and Windows utilites and commands for every pentester and terminal enthusiast to automate redundant tasks.">
-<link rel="canonical" href="http://0.0.0.0:4000/archive"><link rel="alternate" type="application/rss+xml" title="Terminal Hub" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="How RegreSSHion vulnerability works and are you affected by it?">
+<link rel="canonical" href="http://0.0.0.0:4000/Regression"><link rel="alternate" type="application/rss+xml" title="Terminal Hub" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -281,9 +281,9 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__main--immersive page__viewport has-aside cell cell--auto">
 
-      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header header--dark"><div class="main">
       <div class="header__title">
         <div class="header__brand"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="24px" height="24px" viewBox="0 0 24 24">
@@ -297,267 +297,248 @@
         <ul><li class="navigation__item"><a href="/archive">Archive</a></li><li class="navigation__item"><a href="/about">About</a></li><li class="navigation__item"><a href="https://xmehulx.github.io">Home</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
-</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:linear-gradient(to right, orange, red);"><div class="hero__content"><div class ="main"><div class="article__header"><header><h1>RegreSSHion? Technical analysis of CVE-2024-6387</h1></header></div><p class="overlay__excerpt">How RegreSSHion vulnerability works and are you affected by it?</p><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=SSH">SSH</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=CVE">CVE</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=c">c</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=memory+corruption">memory corruption</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=race+condition">race condition</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=remote+code+execution">remote code execution</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=aysnc-signal-unsafe">aysnc-signal-unsafe</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive.html?tag=glibc">glibc</a>
+            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>Mehul Singh</span></li><li><i class="far fa-calendar-alt"></i> <span>Jul 03, 2024</span>
+            </li></ul></div></div></div>
+              </div>
+            </div><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><div class="article__header"><header><h1>Archive</h1></header></div><meta itemprop="headline" content="Archive"><meta itemprop="author" content="Mehul Singh"/><div class="js-article-content"><div class="layout--archive js-all"><div class="site-tags js-tags">
-  <ul class="menu">
-    <li>
-      <button type="button" class="button button--secondary button--pill tag-button tag-button--all" data-encode="">
-        Show All<div class="tag-button__count">4</div>
-      </button>
-    </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="CIDR">
-          <span>CIDR</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="CVE">
-          <span>CVE</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="SSH">
-          <span>SSH</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="argc">
-          <span>argc</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="argv">
-          <span>argv</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="awk">
-          <span>awk</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="aysnc-signal-unsafe">
-          <span>aysnc-signal-unsafe</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="beginner">
-          <span>beginner</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="c">
-          <span>c</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="capture+filters">
-          <span>capture filters</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="console">
-          <span>console</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="data+manipulation">
-          <span>data manipulation</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="delimiter">
-          <span>delimiter</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="display+filters">
-          <span>display filters</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="field+seperator">
-          <span>field seperator</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="field+splitting">
-          <span>field splitting</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="filters">
-          <span>filters</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="ftp">
-          <span>ftp</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="glibc">
-          <span>glibc</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="gsub">
-          <span>gsub</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="htb">
-          <span>htb</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="memory+corruption">
-          <span>memory corruption</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="python">
-          <span>python</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="race+condition">
-          <span>race condition</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="regular+expression">
-          <span>regular expression</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="remote+code+execution">
-          <span>remote code execution</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="reverse+engineering">
-          <span>reverse engineering</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="scripting+language">
-          <span>scripting language</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="shell">
-          <span>shell</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="terminal">
-          <span>terminal</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="tshark">
-          <span>tshark</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="wireshark">
-          <span>wireshark</span><div class="tag-button__count">1</div>
-        </button>
+<article itemscope itemtype="http://schema.org/Article"><meta itemprop="headline" content="RegreSSHion? Technical analysis of CVE-2024-6387"><meta itemprop="author" content="Mehul Singh"/><meta itemprop="datePublished" content="2024-07-03T00:00:00+05:30">
+    <meta itemprop="keywords" content="SSH,CVE,c,memory corruption,race condition,remote code execution,aysnc-signal-unsafe,glibc"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><h2 id="what-is-regresshion-vulnerability">What is RegreSSHion vulnerability?</h2>
+
+<p>On July 1, Qualys Inc published a <a href="https://www.qualys.com/2024/07/01/cve-2024-6387/regresshion.txt">security advisory</a> stating a new vulnerability in Glibc-based SSH implementation named OpenSSH, which affects 8.5p1 &lt;= OpenSSH &lt; 9.8p1 and OpenSSH &lt;= 4.4p1 versions. According to the researchers, a race condition affects the vulnerable version where, upon winning this race condition the user can execute any privileged code, remotely.</p>
+
+<p>This was made possible due to GNU’s C library, glibc, not locking memory altering modules such as <code class="language-plaintext highlighter-rouge">malloc()</code> in the vulnerable versions, which runs with full privilege, and outside any kind of sandbox and reaching that unsafe state before the code completes its execution. The name of this CVE is due to it being an actual regressed SSH state as it was due to CVE-2006-5051, which also allowed race condition in signal handler to provide remote code execution.</p>
+
+<p>An overview of race condition across different vulnerable versions:</p>
+<ol>
+  <li>OpenSSH 3.4p1 (Debian 3.0r6): Exploiting this version required interrupting a call to <code class="language-plaintext highlighter-rouge">free()</code> with <em>SIGALRM</em>, leaving the heap in an inconsistent state and exploiting this state in another call to free(). It took the researchers approximately 10,000 tries, or about one week on average, to obtain a remote root shell in this version.</li>
+  <li>OpenSSH 4.2p1 (Ubuntu 6.06.1): Exploitation of this involved interrupting a call to <code class="language-plaintext highlighter-rouge">pam_start()</code> with <em>SIGALRM</em>, leading to an inconsistent state exploited in a call to pam_end(). It takes about 1-2 days to obtain a remote root shell</li>
+  <li>OpenSSH 9.2p1 (Debian 12.5.0): Exploitating this involves interrupting a call to malloc() with <em>SIGALRM</em>, resulting in an inconsistent heap state exploited in another malloc() call. It took them about 6-8 hours on average to obtain a remote root shell</li>
+</ol>
+
+<h2 id="how-did-it-came-to-be">How did it came to be?</h2>
+
+<p>We will try to understand how they did it, but from a red teaming mindset; to understand, in order to break. And even if you don’t understand C programming, don’t worry. Just understanding the general flow through function and variable names, should be enough to understand why this vulnerability exists for starter.</p>
+
+<h3 id="timeline">Timeline</h3>
+
+<p>On October 16 2020, the following piece of code got removed from log.c file as seen in the <a href="https://github.com/openssh/openssh-portable/commit/752250caabda3dd24635503c4cd689b32a650794">OpenSSH#752250c</a> commit. And this triggered a chain code execution which, if timed right, can allow a person to execute remote code without prior authentication.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">172</span> <span class="kt">void</span> 
+<span class="mi">173</span> <span class="n">sigdie</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,...)</span>
+<span class="mi">174</span> <span class="p">{</span>
+<span class="mi">175</span> <span class="err">#</span><span class="n">ifdef</span> <span class="n">DO_LOG_SAFE_IN_SIGHAND</span>
+<span class="mi">176</span>      <span class="kt">va_list</span> <span class="n">args</span><span class="p">;</span>
+<span class="mi">177</span>
+<span class="mi">178</span>      <span class="n">va_start</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">fmt</span><span class="p">);</span>
+<span class="mi">179</span>      <span class="n">do_log</span><span class="p">(</span><span class="n">SYSLOG_LEVEL_FATAL</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">args</span><span class="p">);</span>
+<span class="mi">180</span>      <span class="n">va_end</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+<span class="mi">181</span>  <span class="err">#</span><span class="n">endif</span>
+<span class="mi">182</span>      <span class="n">_exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="mi">183</span>  <span class="p">}</span>
+</code></pre></div></div>
+
+<p>The researchers in Qualys actually exploited the older version of OpenSSH (prior to 4.4p1) by exploiting its calling of <code class="language-plaintext highlighter-rouge">grace_alarm_handler()</code> function which waited for the <em>LoginGraceTime</em> before freeing the buffer by calling <code class="language-plaintext highlighter-rouge">free()</code> function, which is a well known unsafe asynchronous signal function. With this information, they tried to find two things or conditions which must be met to exploit the same race condition in the latest versions of OpenSSH as well:</p>
+<ol>
+  <li>Is there a similar function being called here which is async-signal-unsafe such as <code class="language-plaintext highlighter-rouge">malloc()</code> and <code class="language-plaintext highlighter-rouge">free()</code>?</li>
+  <li>If there is, is it behind a lock?</li>
+</ol>
+
+<p>Interestingly enough, just after they started working on it, <a href="https://bugzilla.mindrot.org/show_bug.cgi?id=3690">Bugzilla #3690</a> thread got created which raised an extremely related issue, which, got marked as a duplicate by <a href="https://bugzilla.mindrot.org/show_bug.cgi?id=3598">Bugzilla #3598</a></p>
+
+<h3 id="execution-chain-in-openssh">Execution Chain in OpenSSH</h3>
+
+<p>In the latest versions of OpenSSH, (the last vulnerable version) the <code class="language-plaintext highlighter-rouge">grace_alarm_handler()</code> function in <code class="language-plaintext highlighter-rouge">sshd.c</code> [ultimately] calls a very interesting function called <code class="language-plaintext highlighter-rouge">syslog()</code>. Below is the complete chain of codes:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="mi">353</span> <span class="nf">grace_alarm_handler</span><span class="p">(</span><span class="kt">int</span> <span class="n">sig</span><span class="p">)</span>
+ <span class="mi">354</span> <span class="p">{</span>
+ <span class="p">...</span> 
+ <span class="mi">364</span>     <span class="cm">/* Log error and exit. */</span>
+ <span class="mi">365</span>     <span class="n">sigdie</span><span class="p">(</span><span class="s">"Timeout before authentication for %s port %d"</span><span class="p">,</span>
+ <span class="mi">366</span>         <span class="n">ssh_remote_ipaddr</span><span class="p">(</span><span class="n">the_active_state</span><span class="p">),</span>
+ <span class="mi">367</span>         <span class="n">ssh_remote_port</span><span class="p">(</span><span class="n">the_active_state</span><span class="p">));</span>
+ <span class="mi">368</span> <span class="err">}</span>
+</code></pre></div></div>
+
+<p>This <code class="language-plaintext highlighter-rouge">sigdie()</code> function is a macro defined in <code class="language-plaintext highlighter-rouge">log.h</code> header file where macro expansion to <code class="language-plaintext highlighter-rouge">sshsigdie()</code> function takes place. This <code class="language-plaintext highlighter-rouge">sshsigdie()</code> function is defined in <code class="language-plaintext highlighter-rouge">log.c</code> file:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">451</span> <span class="nf">sshsigdie</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">func</span><span class="p">,</span> <span class="kt">int</span> <span class="n">line</span><span class="p">,</span> <span class="kt">int</span> <span class="n">showfunc</span><span class="p">,</span>
+<span class="mi">452</span>     <span class="n">LogLevel</span> <span class="n">level</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">suffix</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="p">...)</span>
+<span class="mi">453</span> <span class="p">{</span>
+<span class="p">...</span>
+<span class="mi">457</span>     <span class="n">sshlogv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">line</span><span class="p">,</span> <span class="n">showfunc</span><span class="p">,</span> <span class="n">SYSLOG_LEVEL_FATAL</span><span class="p">,</span> <span class="n">suffix</span><span class="p">,</span> <span class="n">fmt</span><span class="p">,</span> <span class="n">args</span><span class="p">);</span>
+<span class="mi">460</span>     <span class="nf">_exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="mi">461</span> <span class="err">}</span>
+</code></pre></div></div>
+
+<p>This <code class="language-plaintext highlighter-rouge">sshlogv</code> is also defined in <code class="language-plaintext highlighter-rouge">log.c</code> through macro in <code class="language-plaintext highlighter-rouge">log.h</code>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">464</span> <span class="nf">sshlogv</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">file</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">func</span><span class="p">,</span> <span class="kt">int</span> <span class="n">line</span><span class="p">,</span> <span class="kt">int</span> <span class="n">showfunc</span><span class="p">,</span>
+<span class="mi">465</span>     <span class="n">LogLevel</span> <span class="n">level</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">suffix</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="kt">va_list</span> <span class="n">args</span><span class="p">)</span>
+<span class="mi">466</span> <span class="p">{</span>
+<span class="p">...</span> 
+<span class="mi">493</span>     <span class="n">do_log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">forced</span><span class="p">,</span> <span class="n">suffix</span><span class="p">,</span> <span class="n">fmt2</span><span class="p">,</span> <span class="n">args</span><span class="p">);</span>
+<span class="mi">494</span> <span class="err">}</span>
+</code></pre></div></div>
+
+<p>And finally, this <code class="language-plaintext highlighter-rouge">do_log()</code> is what calls glibc’s native syslog() (line 419) in <code class="language-plaintext highlighter-rouge">log.c</code>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">336</span> <span class="k">static</span> <span class="kt">void</span> <span class="nf">do_log</span><span class="p">(</span><span class="n">LogLevel</span> <span class="n">level</span><span class="p">,</span> <span class="kt">int</span> <span class="n">force</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">suffix</span><span class="p">,</span>
+<span class="mi">337</span>       <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="kt">va_list</span> <span class="n">args</span><span class="p">)</span>
+<span class="mi">338</span> <span class="p">{</span>
+<span class="p">...</span>
+<span class="mi">413</span> <span class="err">#</span><span class="k">if</span> <span class="n">defined</span><span class="p">(</span><span class="n">HAVE_OPENLOG_R</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">defined</span><span class="p">(</span><span class="n">SYSLOG_DATA_INIT</span><span class="p">)</span>
+<span class="p">...</span>
+<span class="mi">417</span> <span class="err">#</span><span class="k">else</span>
+<span class="p">...</span>
+<span class="mi">419</span>         <span class="n">syslog</span><span class="p">(</span><span class="n">pri</span><span class="p">,</span> <span class="s">"%.500s"</span><span class="p">,</span> <span class="n">fmtbuf</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="mi">421</span> <span class="err">#</span><span class="n">endif</span>
+<span class="p">...</span>
+<span class="mi">424</span> <span class="err">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Going back to our question 1, does this <code class="language-plaintext highlighter-rouge">syslog()</code> call any async-signal-unsafe? Yes! But <em>only if</em> the very first call to <code class="language-plaintext highlighter-rouge">syslog()</code> is made inside the <em>SIGALRM</em> handler, then syslog allocates a file structure and an internal read buffer through malloc</p>
+  </li>
+  <li>
+    <p>What about the second question? Is it locked? No! Based on commit <a href="https://sourceware.org/git/?p=glibc.git;a=commit;h=3f6bb8a32e5f5efd78ac08c41e623651cc242a89">#3f6bb8a</a>, <a href="https://sourceware.org/git/?p=glibc.git;a=commit;h=a15d53e2de4c7d83bda251469d92a3c7b49a90db">#a15d53e2</a> and <a href="https://sourceware.org/git/?p=glibc.git;a=commit;h=905a7725e9157ea522d8ab97b4c8b96aeb23df54">#905a772</a> on glibc, we notice that a ‘feature’ was added to bypass locking when single-threading our application.</p>
+  </li>
+</ul>
+
+<p>This guarantees that race conditions can be achieved, barring the features like NX which further attempts to prevent execution of codes in certain regions and ASLR which randomizes the address space in attept to make memory addres predictions harder. But even then, in systems like i386, some libraries like glibc is always mapped either at address 0xb7200000 or at address 0xb7400000, making their predictions right 50% of the time (more than 50% technically)</p>
+
+<h3 id="exploiting-malloc">Exploiting Malloc</h3>
+
+<p>Now that we know that we can run aysnc-signal-unsafe functions, the next thing is to find a control flow in <code class="language-plaintext highlighter-rouge">malloc()</code> which, when interrupted by <em>SIGALRM</em> at the right time, leaves the heap in a volatile state. If this gets possible, another signal can be made from the <em>SIGALRM</em> handler in sshd with user defined payload to be executed in a privileged state (something like a piggyback attack).</p>
+
+<p>The researchers found numerous possible entries which might trigger this, and they went ahead with exploiting the function <code class="language-plaintext highlighter-rouge">_int_malloc()</code> which makes use of relative sizes and not absolute addresses, and this makes it better suited for amd64 exploits due to them having better ASLR capabilities. But even with this approach, their exploit worked only on i386 systems for the time being.</p>
+
+<p>From here on out the exploit gets real technical as it deals with controlling and corrupting the heap memory with various precise function calls. The exact steps taken are better explained by the researchers themselves from here on out, and can be accessed from the security advisory linked in the introduction of this post.</p>
+
+<h2 id="should-everyone-be-concerned">Should everyone be concerned?</h2>
+
+<p><em>TL;DR: No*</em></p>
+
+<p>From their report, although this attack can provide remote code execution, it takes thousands of attempts which can be logged and easily detected by modern solutions. And this by default doesn’t affect some systems such as OpenBSD which already uses async-signal-safe functions such as <code class="language-plaintext highlighter-rouge">syslog_r()</code>.</p>
+
+<h3 id="mitigations-and-precautions">Mitigations and Precautions</h3>
+
+<p>This vulnerability was mitigated on June 6, 2024, through commit <a href="https://github.com/openssh/openssh-portable/commit/81c1099d22b81ebfd20a334ce986c4f753b0db29">#81c1099</a> which was a part of a much bigger commit aiming at a diffense-in-depth approach which could be seen from another recent commit <a href="">#03e3de4</a> “Start the process of splitting sshd into separate binaries”. And since this might introduce difficulties in backporting, you can simply remove or comment out the async-signal-unsafe code from previously mentioned <code class="language-plaintext highlighter-rouge">sshsigdie()</code> function.</p>
+
+<p>And in the worse case scenarios where sshd cannot be updated or recompiled, you can just set the <em>LoginGraceTime</em> to 0 in the configuration file. This will make the code vulnerable to DoS attacks but protect against possible remote code executions as mentioned in their advisory.</p>
+
+<h2 id="further-reading">Further reading</h2>
+
+<ol>
+  <li><a href="https://lcamtuf.coredump.cx/signals.txt">Delivering Signals for Fun and Profit</a></li>
+  <li><a href="https://www.openwall.com/articles/JPEG-COM-Marker-Vulnerability#exploit">JPEG COM Marker Processing Vulnerability</a></li>
+  <li><a href="https://zolutal.github.io/aslrnt/">ASLRn’t: How memory alignment broke library ASLR</a></li>
+</ol>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-07-03T00:00:00+05:30"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+<div itemscope itemtype="http://schema.org/Person" class="author-profile card card--flat item"><a href="https://mehulsingh.in" class="item__image"><img class="author-profile__avatar" itemprop="image" src="https://xmehulx.github.io/assets/img/og.jpg" /></a><div class="item__content"><meta itemprop="name" content="Mehul Singh">
+        <p class="author-profile__name"><meta itemprop="url" content="https://mehulsingh.in">
+            <a href="https://mehulsingh.in">Mehul Singh</a></p><p itemprop="description">A graduate student working on his red-teaming journey.</p><div class="author-profile__links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"><link itemprop="url" href="https://mehulsingh.in"><li title="Follow Mehul on Twitter.">
+        <a class="button button--circle twitter-button" itemprop="sameAs" href="https://twitter.com/0x__shell" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1024.032 194.432c-37.664 16.704-78.176 28-120.672 33.088 43.36-26.016 76.672-67.168 92.384-116.224-40.608 24.064-85.568 41.568-133.408 50.976-38.336-40.832-92.928-66.336-153.344-66.336-116.032 0-210.08 94.048-210.08 210.08 0 16.48 1.856 32.512 5.44 47.872-174.592-8.768-329.408-92.416-433.024-219.52-18.08 31.04-28.448 67.104-28.448 105.632 0 72.896 37.088 137.184 93.472 174.88-34.432-1.088-66.816-10.528-95.168-26.272-0.032 0.864-0.032 1.76-0.032 2.656 0 101.792 72.416 186.688 168.512 205.984-17.632 4.8-36.192 7.36-55.36 7.36-13.536 0-26.688-1.312-39.52-3.776 26.72 83.456 104.32 144.192 196.256 145.888-71.904 56.352-162.496 89.92-260.928 89.92-16.96 0-33.664-0.992-50.112-2.944 92.96 59.616 203.392 94.4 322.048 94.4 386.432 0 597.728-320.128 597.728-597.76 0-9.12-0.192-18.176-0.608-27.168 41.056-29.632 76.672-66.624 104.832-108.736z" />
+</svg>
+</div>
+        </a>
+      </li><li title="Follow Mehul on Linkedin.">
+        <a class="button button--circle linkedin-button" itemprop="sameAs" href="https://www.linkedin.com/in/mehul-singh-0x00" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M260.096 155.648c0 27.307008-9.899008 50.516992-29.696 69.632-19.796992 19.115008-45.396992 28.672-76.8 28.672-30.036992 0-54.612992-9.556992-73.728-28.672-19.115008-19.115008-28.672-42.324992-28.672-69.632 0-28.672 9.556992-52.224 28.672-70.656 19.115008-18.432 44.372992-27.648 75.776-27.648 31.403008 0 56.32 9.216 74.752 27.648 18.432 18.432 28.331008 41.984 29.696 70.656 0 0 0 0 0 0m-202.752 808.96c0 0 0-632.832 0-632.832 0 0 196.608 0 196.608 0 0 0 0 632.832 0 632.832 0 0-196.608 0-196.608 0 0 0 0 0 0 0m313.344-430.08c0-58.708992-1.364992-126.292992-4.096-202.752 0 0 169.984 0 169.984 0 0 0 10.24 88.064 10.24 88.064 0 0 4.096 0 4.096 0 40.96-68.267008 105.812992-102.4 194.56-102.4 68.267008 0 123.220992 22.868992 164.864 68.608 41.643008 45.739008 62.464 113.664 62.464 203.776 0 0 0 374.784 0 374.784 0 0-196.608 0-196.608 0 0 0 0-350.208 0-350.208 0-91.476992-33.451008-137.216-100.352-137.216-47.787008 0-81.236992 24.576-100.352 73.728-4.096 8.192-6.144 24.576-6.144 49.152 0 0 0 364.544 0 364.544 0 0-198.656 0-198.656 0 0 0 0-430.08 0-430.08 0 0 0 0 0 0" />
+</svg>
+</div>
+        </a>
+      </li><li title="Follow Mehul on Github.">
+        <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/xmehulx" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path class="svgpath" data-index="path_0" fill="#272636" d="M0 525.2c0 223.6 143.3 413.7 343 483.5 26.9 6.8 22.8-12.4 22.8-25.4l0-88.7c-155.3 18.2-161.5-84.6-172-101.7-21.1-36-70.8-45.2-56-62.3 35.4-18.2 71.4 4.6 113.1 66.3 30.2 44.7 89.1 37.2 119 29.7 6.5-26.9 20.5-50.9 39.7-69.6C248.8 728.2 181.7 630 181.7 513.2c0-56.6 18.7-108.7 55.3-150.7-23.3-69.3 2.2-128.5 5.6-137.3 66.5-6 135.5 47.6 140.9 51.8 37.8-10.2 80.9-15.6 129.1-15.6 48.5 0 91.8 5.6 129.8 15.9 12.9-9.8 77-55.8 138.8-50.2 3.3 8.8 28.2 66.7 6.3 135 37.1 42.1 56 94.6 56 151.4 0 117-67.5 215.3-228.8 243.7 26.9 26.6 43.6 63.4 43.6 104.2l0 128.8c0.9 10.3 0 20.5 17.2 20.5C878.1 942.4 1024 750.9 1024 525.3c0-282.9-229.3-512-512-512C229.1 13.2 0 242.3 0 525.2L0 525.2z" />
+</svg>
+</div>
+        </a>
       </li></ul>
 </div>
-<div class="js-result layout--archive__result d-none"><div class="article-list items"><section><h2 class="article-list__group-header">2024</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="htb,reverse+engineering,python">
-        <div class="item__content"><span class="item__meta">Jul 14</span><a itemprop="headline" class="item__header" href="/BabyEncryption-RE.htb">BabyEncryption. HackTheBox RE Challenge writeup</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="SSH,CVE,c,memory+corruption,race+condition,remote+code+execution,aysnc-signal-unsafe,glibc">
-        <div class="item__content"><span class="item__meta">Jul 03</span><a itemprop="headline" class="item__header" href="/Regression">RegreSSHion? Technical analysis of CVE-2024-6387</a></div>
-      </li></ul></section><section><h2 class="article-list__group-header">2020</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="wireshark,beginner,terminal,ftp,console,shell,filters,capture+filters,display+filters,CIDR,tshark">
-        <div class="item__content"><span class="item__meta">Jul 08</span><a itemprop="headline" class="item__header" href="/wireshark-basic-tutorial-using-ftp-session">Wireshark Basics - FTP Packet Analysis</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="awk,beginner,terminal,data+manipulation,scripting+language,console,shell,delimiter,regular+expression,field+splitting,argc,argv,field+seperator,gsub">
-        <div class="item__content"><span class="item__meta">Jun 19</span><a itemprop="headline" class="item__header" href="/beginners-guide-to-awk">Beginner's Guide to AWK</a></div>
-      </li></div>
 </div>
+
+    </div>
+</div>
+<div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">Subscribe</a></div>
+</div><div class="article__license"><div class="license">
+    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International</a> license.
+      <a rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">
+        <img alt="Attribution-NonCommercial 4.0 International" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/wireshark-basic-tutorial-using-ftp-session">Wireshark Basics - FTP Packet Analysis</a></div><div class="next"><span>NEXT</span><a href="/BabyEncryption-RE.htb">BabyEncryption. HackTheBox RE Challenge writeup</a></div></div></div>
+
 </div>
 
 <script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
-  function queryString() {
-    // This function is anonymous, is executed immediately and
-    // the return value is assigned to QueryString!
-    var i = 0, queryObj = {}, pair;
-    var queryStr = window.location.search.substring(1);
-    var queryArr = queryStr.split('&');
-    for (i = 0; i < queryArr.length; i++) {
-      pair = queryArr[i].split('=');
-      // If first entry with this name
-      if (typeof queryObj[pair[0]] === 'undefined') {
-        queryObj[pair[0]] = pair[1];
-        // If second entry with this name
-      } else if (typeof queryObj[pair[0]] === 'string') {
-        queryObj[pair[0]] = [queryObj[pair[0]], pair[1]];
-        // If third or later entry with this name
-      } else {
-        queryObj[pair[0]].push(pair[1]);
-      }
-    }
-    return queryObj;
-  }
-
-  var setUrlQuery = (function() {
-    var baseUrl =  window.location.href.split('?')[0];
-    return function(query) {
-      if (typeof query === 'string') {
-        window.history.replaceState(null, '', baseUrl + query);
-      } else {
-        window.history.replaceState(null, '', baseUrl);
-      }
-    };
-  })();
-
   window.Lazyload.js(SOURCES.jquery, function() {
-    var $tags = $('.js-tags');
-    var $articleTags = $tags.find('button');
-    var $tagShowAll = $tags.find('.tag-button--all');
-    var $result = $('.js-result');
-    var $sections = $result.find('section');
-    var sectionArticles = [];
-    var $lastFocusButton = null;
-    var sectionTopArticleIndex = [];
-    var hasInit = false;
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
 
-    $sections.each(function() {
-      sectionArticles.push($(this).find('.item'));
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
     });
-
-    function init() {
-      var i, index = 0;
-      for (i = 0; i < $sections.length; i++) {
-        sectionTopArticleIndex.push(index);
-        index += $sections.eq(i).find('.item').length;
-      }
-      sectionTopArticleIndex.push(index);
-    }
-
-    function searchButtonsByTag(_tag/*raw tag*/) {
-      if (!_tag) {
-        return $tagShowAll;
-      }
-      var _buttons = $articleTags.filter('[data-encode="' + _tag + '"]');
-      if (_buttons.length === 0) {
-        return $tagShowAll;
-      }
-      return _buttons;
-    }
-    function buttonFocus(target) {
-      if (target) {
-        target.addClass('focus');
-        $lastFocusButton && !$lastFocusButton.is(target) && $lastFocusButton.removeClass('focus');
-        $lastFocusButton = target;
-      }
-    }
-
-    function tagSelect (tag/*raw tag*/, target) {
-      var result = {}, $articles;
-      var i, j, k, _tag;
-
-      for (i = 0; i < sectionArticles.length; i++) {
-        $articles = sectionArticles[i];
-        for (j = 0; j < $articles.length; j++) {
-          if (tag === '' || tag === undefined) {
-            result[i] || (result[i] = {});
-            result[i][j] = true;
-          } else {
-            var tags = $articles.eq(j).data('tags').split(',');
-            for (k = 0; k < tags.length; k++) {
-              if (tags[k] === tag) {
-                result[i] || (result[i] = {});
-                result[i][j] = true; break;
-              }
-            }
-          }
-        }
-      }
-
-      for (i = 0; i < sectionArticles.length; i++) {
-        result[i] && $sections.eq(i).removeClass('d-none');
-        result[i] || $sections.eq(i).addClass('d-none');
-        for (j = 0; j < sectionArticles[i].length; j++) {
-          if (result[i] && result[i][j]) {
-            sectionArticles[i].eq(j).removeClass('d-none');
-          } else {
-            sectionArticles[i].eq(j).addClass('d-none');
-          }
-        }
-      }
-
-      hasInit || ($result.removeClass('d-none'), hasInit = true);
-
-
-      if (target) {
-        buttonFocus(target);
-        _tag = target.attr('data-encode');
-        if (_tag === '' || typeof _tag !== 'string') {
-          setUrlQuery();
-        } else {
-          setUrlQuery('?tag=' + _tag);
-        }
-      } else {
-        buttonFocus(searchButtonsByTag(tag));
-      }
-    }
-
-    var query = queryString(), _tag = query.tag;
-    init(); tagSelect(_tag);
-    $tags.on('click', 'button', function() {
-      tagSelect($(this).data('encode'), $(this));
-    });
-
   });
 })();
 </script>
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -1114,12 +1095,82 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
 	}};MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
+</script>
 
     </div>
     <script>(function () {
