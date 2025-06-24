@@ -4916,39 +4916,39 @@ a > .item__header.disabled, a > .item__header:disabled, a.item__header.disabled,
 }
 .author-links > ul > li > .twitter-button, .author-links > ul > li > .twitter-button:link, .author-links > ul > li > .twitter-button:visited {
   color: #fff;
-  background-color: #1da1f2;
+  background-color: #000000;
 }
 .author-links > ul > li > .twitter-button svg path, .author-links > ul > li > .twitter-button:link svg path, .author-links > ul > li > .twitter-button:visited svg path {
   fill: #fff;
 }
 .root[data-is-touch=false] .author-links > ul > li > .twitter-button:hover {
   color: #fff;
-  background-color: rgb(10.8569037657, 121.0962343096, 188.7430962343);
+  background-color: rgb(45.9, 45.9, 45.9);
 }
 .root[data-is-touch=false] .author-links > ul > li > .twitter-button:hover svg path {
   fill: #fff;
 }
 .root[data-is-touch] .author-links > ul > li > .twitter-button.active, .root[data-is-touch] .author-links > ul > li > .twitter-button:active {
   color: #fff;
-  background-color: rgb(6.6958158996, 74.6841004184, 116.4041841004);
+  background-color: rgb(86.7, 86.7, 86.7);
 }
 .root[data-is-touch] .author-links > ul > li > .twitter-button.active svg path, .root[data-is-touch] .author-links > ul > li > .twitter-button:active svg path {
   fill: #fff;
 }
 .root[data-is-touch] .author-links > ul > li > .twitter-button.focus {
   color: default;
-  background-color: rgb(10.8569037657, 121.0962343096, 188.7430962343);
-  box-shadow: 0 0 0 2px rgba(10.8569037657, 121.0962343096, 188.7430962343, 0.4);
+  background-color: rgb(45.9, 45.9, 45.9);
+  box-shadow: 0 0 0 2px rgba(45.9, 45.9, 45.9, 0.4);
 }
 .root[data-is-touch] .author-links > ul > li > .twitter-button.focus svg path {
   fill: default;
 }
 .author-links > ul > li > .twitter-button.disabled, .author-links > ul > li > .twitter-button:disabled {
-  color: rgba(255, 255, 255, 0.2) !important;
-  background-color: #1da1f2 !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  background-color: #000000 !important;
 }
 .author-links > ul > li > .twitter-button.disabled svg path, .author-links > ul > li > .twitter-button:disabled svg path {
-  fill: rgba(255, 255, 255, 0.2) !important;
+  fill: rgba(255, 255, 255, 0.4) !important;
 }
 .author-links > ul > li > .weibo-button {
   -webkit-transition: all 0.2s ease-in-out;
