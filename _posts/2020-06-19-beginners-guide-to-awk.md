@@ -262,9 +262,9 @@ We used `'$1=$1'` because it forces AWK to rebuild the record because simple usi
 `manual`{:.info}
 
 > **Understanding $0:**
-It is important to remember that $0 is the full record, exactly as it was read from the input. This includes any leading or trailing whitespace, and the exact whitespace (or other characters) that separates the fields.
-It is a common error to try to change the field separators in a record simply by setting FS and OFS, and then expecting a plain ‘print’ or ‘print $0’ to print the modified record.
-But this does not work, because nothing was done to change the record itself. Instead, you must force the record to be rebuilt, typically with a statement such as ‘$1 = $1’, as described earlier.
+It is important to remember that `$0` is the full record, exactly as it was read from the input. This includes any leading or trailing whitespace, and the exact whitespace (or other characters) that separates the fields.
+It is a common error to try to change the field separators in a record simply by setting FS and OFS, and then expecting a plain ‘print’ or ‘print `$0`’ to print the modified record.
+But this does not work, because nothing was done to change the record itself. Instead, you must force the record to be rebuilt, typically with a statement such as `$1 = $1`, as described earlier.
 
 You can read more about it [here](https://www.gnu.org/software/gawk/manual/html_node/Changing-Fields.html).
 

@@ -39,9 +39,10 @@
       {%- if _author.bio -%}
         <p itemprop="description">{{ _author.bio }}</p>
       {%- endif -%}
-      <div class="author-profile__links">
-        {%- include author-links.html author=_author -%}
-      </div>
-
+      {% comment %} 
+        <div class="author-profile__links">
+         {%- include author-links.html author=_author -%}
+        </div>
+      {% endcomment %}
     </div>
 </div>
